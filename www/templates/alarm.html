@@ -1,0 +1,28 @@
+<ion-view view-title="{{ pageTitle }}">
+  <ion-content class="padding">
+    <div ng-repeat="timeSet in timeSets">
+      <h3><strong>{{ timeSet.label }}: </strong>
+      {{ timeSet.hour }}:{{ timeSet.minute }} {{ timeSet.timeOfDay }}</h3>
+      <div class="list">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Hour
+          </div>
+          <select ng-model="timeSet.hour" ng-options="hour for hour in hours"></select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Minutes
+          </div>
+          <select ng-model="timeSet.minute" ng-options="minute for minute in minutes"></select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Time of Day
+          </div>
+          <select ng-model="timeSet.timeOfDay" ng-options="timeOfDay for timeOfDay in timeOfDays"></select>
+        </label>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
