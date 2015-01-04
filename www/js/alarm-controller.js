@@ -22,13 +22,21 @@ angular.module('flux.controllers', [])
 
     var sendTime = function(){
       MeshbluService.getConnection().then(function(conn){
-        var updateObj = {};
+        var messageObj = {
+          devices : '*',
+          topic : 'superneato',
+          payload : {}
+        };
         _.each(_.keys($scope.timeSets), function(timeSet){
-          updateObj[timeSet] = _.clone($scope.timeSets[timeSet]);
-          delete updateObj[timeSet].label;
+          messageObj.payload[timeSet] = _.clone($scope.timeSets[timeSet]);
+          delete messageObj.payload[timeSet].label;
         });
+        conn.message(messageObj, function(){
+          console.log('Messaged', messageObj);
+        });
+        var updateObj = messageObj.payload;
         conn.update(updateObj, function(){
-          console.log('Updated', updateObj);
+          console.log('Messaged', updateObj);
         });
       });
     };

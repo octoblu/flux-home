@@ -13,7 +13,7 @@ angular.module('flux.services', [])
       self.connObj.token = window.localStorage.setItem('token', config.token) && config.token;
     }
 
-    self.connObj = _.extend({}, getConfig());
+    self.connObj = _.extend({ type : 'flux-home' }, getConfig());
 
     self.getConnection = function(){
       var defer = $q.defer();
