@@ -36,7 +36,7 @@ angular.module('flux.controllers', [])
         });
         var updateObj = messageObj.payload;
         conn.update(updateObj, function(){
-          console.log('Messaged', updateObj);
+          console.log('Updated', updateObj);
         });
       });
     };

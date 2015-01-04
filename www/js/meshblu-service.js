@@ -9,11 +9,14 @@ angular.module('flux.services', [])
       };
     }
     function setConfig(config){
-      self.connObj.uuid = window.localStorage.setItem('uuid', config.uuid) && config.token;
-      self.connObj.token = window.localStorage.setItem('token', config.token) && config.token;
+      self.connObj.uuid = config.uuid;
+      window.localStorage.setItem('uuid', config.uuid);
+      self.connObj.token = config.token;
+      window.localStorage.setItem('token', config.token);
     }
 
     self.connObj = _.extend({ type : 'flux-home' }, getConfig());
+    console.log(JSON.stringify(self.connObj));
 
     self.getConnection = function(){
       var defer = $q.defer();
